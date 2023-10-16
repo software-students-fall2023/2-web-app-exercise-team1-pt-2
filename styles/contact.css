@@ -29,6 +29,12 @@ strong {
     margin-bottom: 0.5rem;
 }
 
+.buttons{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
 .buttons a {
     display: inline-block;
     background-color: #333;
@@ -41,4 +47,12 @@ strong {
 
 .buttons a:hover {
     background-color: #555;
+}
+
+#back{
+    order: 1;
+}
+
+#edit{
+    order: 2;
 }
