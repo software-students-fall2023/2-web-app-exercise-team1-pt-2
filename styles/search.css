@@ -22,6 +22,7 @@ main{
     justify-content: center;
     width: 80%;
     margin: 2rem auto;
+    max-width: 500px;
     padding: 1rem;
     background-color: white;
     border: solid;
@@ -34,30 +35,29 @@ main{
 .contact{
     padding: 4% 1%;
     margin: 1%;
-    border-radius: 60px;
     display: flex;
     background-color: white;
     flex-direction: row;
     align-items: center;
-    font-size: 3vw;
 }
 
 .contact > i{
     border-color: #f4f4f4;
     border-style: solid;
     border-radius: 50% 50%;
-    padding: 6% 6%;
-    margin: 5% 3%;
+    padding: 25px 25px;
+    margin: 25px 15px;
     background-color: #f4f4f4;
 }
 
 .contact > strong{
     padding: 0 4%;
-    font-size: 4vw;
+    font-size: auto;
 }
 
 .search-bar{
     width: 80%;
+    max-width: 500px;
     margin: 2rem auto;
     padding: 1rem;
     margin: 2rem auto;
@@ -73,13 +73,13 @@ main{
     border: 0;
     outline: none;
     padding: 3% 3%;
-    font-size: 4vw;
+    font-size: 20px;
     color: black;
 }
 .search-bar button{
     border: 0;
     border-radius: 20%;
-    font-size: 2vw;
+    font-size: auto;
     background: transparent;
     cursor: pointer;
     margin: 3% 3%;
@@ -89,5 +89,4 @@ main{
     color: black;
     margin: 3% 3%;
 }
-
 
