@@ -90,7 +90,6 @@ main{
     margin: 3% 3%;
 }
 
-
 .favourites-button{
 
     color: rgb(41,118,211);
@@ -119,7 +118,7 @@ main{
     
 }
 
-.delete-button{
+.remove-button{
 
     color: rgb(217, 45, 42);
     background-color: white;
@@ -130,20 +129,47 @@ main{
     cursor: pointer;
     border-radius: 2px;
     font-weight: bold;
-    transition: background-color 0.5s, color 0.5s
+    transition: background-color 0.5s, color 0.5s;
+    margin-left: 150px;
 
 }
 
-.delete-button:hover{
+.remove-button:hover{
     background-color: rgb(217, 45, 42) ;
     color : white
 }
 
-.delete-button:active {
+.remove-button:active {
     opacity: 0.7;
     background-color: rgb(217, 45, 42) ;
     color : white
+    
 }
 
+.buttons{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
 
+.buttons a {
+    display: inline-block;
+    background-color: #333;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    text-decoration: none;
+}
 
+.buttons a:hover {
+    background-color: #555;
+}
+
+#back{
+    order: 1;
+}
+
+#edit{
+    order: 2;
+}
