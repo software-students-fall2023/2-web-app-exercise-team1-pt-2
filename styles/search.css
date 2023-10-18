@@ -145,5 +145,25 @@ main{
     color : white
 }
 
+.add-contact{
+    position: fixed;
+    bottom: 0;
+    width: 90%;
+    display: flex;
+    justify-content: flex-end;
+    padding: 3% 3%;
+
+}
+.add-contact button{
+    display: inline-block;
+    background-color: #333;
+    color: white;
+    border-radius: 50% 50%;
+    padding: 20px 20px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
 
 
