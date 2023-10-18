@@ -90,3 +90,60 @@ main{
     margin: 3% 3%;
 }
 
+
+.favourites-button{
+
+    color: rgb(41,118,211);
+    background-color: white;
+    border-style: solid;
+    border-width: 1px;
+    height: 38px;
+    width: 80px;
+    cursor: pointer;
+    border-radius: 2px;
+    margin-left: 200px;
+    font-weight: bold;
+    transition: background-color 0.5s, color 0.5s
+
+}
+
+.favourites-button:hover{
+    background-color:rgb(41,118,211) ;
+    color : white
+}
+
+.favourites-button:active {
+    opacity: 0.7;
+    background-color:rgb(41,118,211) ;
+    color : white
+    
+}
+
+.delete-button{
+
+    color: rgb(217, 45, 42);
+    background-color: white;
+    border-style: solid;
+    border-width: 1px;
+    height: 38px;
+    width: 80px;
+    cursor: pointer;
+    border-radius: 2px;
+    font-weight: bold;
+    transition: background-color 0.5s, color 0.5s
+
+}
+
+.delete-button:hover{
+    background-color: rgb(217, 45, 42) ;
+    color : white
+}
+
+.delete-button:active {
+    opacity: 0.7;
+    background-color: rgb(217, 45, 42) ;
+    color : white
+}
+
+
+
