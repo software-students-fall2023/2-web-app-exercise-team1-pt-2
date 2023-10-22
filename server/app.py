@@ -38,7 +38,7 @@ def add_contact():
         return render_template('contactlist.html')
     return render_template('addcontact.html')
 
-@app.route('favorites')
+@app.route('/favorites')
 def display_favorites():
     contacts = mongo.db.contacts.find({"favorite": "true"})
     return render_template('fav_contact_list.html', contacts=contacts)
