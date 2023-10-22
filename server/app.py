@@ -3,6 +3,7 @@ from pymongo.server_api import ServerApi
 import os
 from dotenv import load_dotenv
 from flask import Flask, render_template, request, redirect, abort, url_for, make_response
+import datetime
 
 load_dotenv()
 uri=os.getenv('URI')
@@ -15,7 +16,7 @@ try:
 except Exception as e:
     print(e)
 
-app=Flask(__name__)
+app=Flask(__name__, template_folder='../templates')
 
 @app.route('/')
 def display_all_contacts():
@@ -29,9 +30,12 @@ def add_contact():
             "fullName": request.form.get("fullName"),
             "phoneNumber": request.form.get("phoneNumber"),
             "emailAddress": request.form.get("emailAddress"),
+            "favorite": "false",
+            "createdAt": datetime.datetime.now(),
+            "updatedAt": datetime.datetime.now()
         }
         mongo.db.contacts.insert_one(contact_data)
-        return redirect(url_for('contactlist'))
+        return render_template('contactlist.html')
     return render_template('addcontact.html')
 
 
@@ -56,7 +60,28 @@ def update_contact(contact_id):
                 "fullName": request.form.get("fullName"),
                 "phoneNumber": request.form.get("phoneNumber"),
                 "emailAddress": request.form.get("emailAddress"),
+                "favorite": request.form.get("favorite"),
+                "updatedAt": datetime.datetime.now()
             }
         }
     )
     return redirect(url_for('contact', contact_id=contact_id))
+
+@app.route('/contact/<contact_id>/delete', methods=['DELETE'])
+def delete_contact(contact_id):
+    mongo.db.contacts.delete_one({"_id": ObjectId(contact_id)})
+    return redirect(url_for('contactlist'))
+
+@app.route('/contact/<contact_id>/favorite', methods=['POST'])
+def favorite_contact(contact_id):
+    mongo.db.contacts.update_one(
+        {"_id": ObjectId(contact_id)},
+        {
+            "$set": {
+                "favorite": "true",
+            }
+        }
+    )
+    return redirect(url_for('contact', contact_id=contact_id))
+
+app.run(debug=True)
