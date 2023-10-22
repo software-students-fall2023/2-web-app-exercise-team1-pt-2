@@ -38,6 +38,10 @@ def add_contact():
         return render_template('contactlist.html')
     return render_template('addcontact.html')
 
+@app.route('favorites')
+def display_favorites():
+    contacts = mongo.db.contacts.find({"favorite": "true"})
+    return render_template('fav_contact_list.html', contacts=contacts)
 
 @app.route('/contact/<contact_id>')
 def contact_details(contact_id):
@@ -67,8 +71,10 @@ def update_contact(contact_id):
     )
     return redirect(url_for('contact', contact_id=contact_id))
 
-@app.route('/contact/<contact_id>/delete', methods=['DELETE'])
+@app.route('/contact/<contact_id>/delete', methods=['GET','DELETE'])
 def delete_contact(contact_id):
+    if request.method == 'GET':
+        return render_template('deletecontact.html', contact_id=contact_id)
     mongo.db.contacts.delete_one({"_id": ObjectId(contact_id)})
     return redirect(url_for('contactlist'))
 
