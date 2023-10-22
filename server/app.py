@@ -16,7 +16,7 @@ try:
 except Exception as e:
     print(e)
 
-app=Flask(__name__, template_folder='../templates')
+app=Flask(__name__, template_folder='../templates', static_folder='../static')
 
 @app.route('/')
 def display_all_contacts():
