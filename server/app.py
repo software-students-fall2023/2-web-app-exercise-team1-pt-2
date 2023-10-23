@@ -23,8 +23,18 @@ app=Flask(__name__, template_folder='../templates', static_folder='../static')
 
 @app.route('/')
 def display_all_contacts():
-    contacts = mongo.db.contacts.find()
-    return render_template('contactlist.html', contacts=contacts)
+    filter_type = request.args.get('filter', 'all')
+
+    if filter_type == 'all':
+        contacts = mongo.db.contacts.find().sort("fullName", pymongo.ASCENDING)
+    elif filter_type == 'favorites':
+        contacts = mongo.db.contacts.find({"favorite": True}).sort("fullName", pymongo.ASCENDING)
+    elif filter_type == 'recent':
+        contacts = mongo.db.contacts.find().sort("updatedAt", pymongo.DESCENDING)
+    else:
+        contacts = mongo.db.contacts.find().sort("fullName", pymongo.ASCENDING)
+
+    return render_template('contactlist.html', contacts=contacts, selected_filter=filter_type)
 
 @app.route('/search')
 def search():

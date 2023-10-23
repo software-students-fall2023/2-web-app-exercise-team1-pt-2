@@ -122,6 +122,28 @@ main{
     color : white;
 }
 
+.chip.selected {
+    background-color: #333;
+    color: white;
+}
+
+.chips a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    height: 100%; 
+    line-height: 38px;
+    text-align: center;
+}
+
+.chips a.chip {
+    color: #dc0f0f;
+}
+
+.chips a.chip.selected {
+    color: white;
+}
+
 .favourites-button{
     color: #333;
     background-color: white;

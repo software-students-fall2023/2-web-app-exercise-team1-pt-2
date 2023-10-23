@@ -19,9 +19,9 @@
             </button>
         </form>
         <div class="chips">
-            <button class = "chip"> All </button>
-            <button class = "chip"> Favourites </button>
-            <button class = "chip"> Recent </button>
+            <a href="{{ url_for('display_all_contacts', filter='all') }}" class="chip {{ 'selected' if selected_filter == 'all' else '' }}">All</a>
+            <a href="{{ url_for('display_all_contacts', filter='favorites') }}" class="chip {{ 'selected' if selected_filter == 'favorites' else '' }}">Favorites</a>
+            <a href="{{ url_for('display_all_contacts', filter='recent') }}" class="chip {{ 'selected' if selected_filter == 'recent' else '' }}">Recent</a>
         </div>
         <main>
             {% for contact in contacts %}
