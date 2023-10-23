@@ -4,11 +4,8 @@ import os
 from dotenv import load_dotenv
 from flask import Flask, render_template, request, redirect, abort, url_for, make_response
 import datetime
-
-import pymongo
-import datetime
 from bson.objectid import ObjectId
-import sys
+import pymongo
 
 load_dotenv()
 uri=os.getenv('URI')
@@ -31,16 +28,20 @@ def display_all_contacts():
 @app.route('/add_contact', methods=['GET', 'POST'])
 def add_contact():
     if request.method == 'POST':
+        name = request.form.get("fname")
+        number = request.form.get("pnumber")
+        email = request.form.get("email")
+
         contact_data = {
-            "fullName": request.form.get("fullName"),
-            "phoneNumber": request.form.get("phoneNumber"),
-            "emailAddress": request.form.get("emailAddress"),
-            "favorite": "false",
+            "fullName": name,
+            "phoneNumber": number,
+            "emailAddress": email,
+            "favorite": False,
             "createdAt": datetime.datetime.now(),
             "updatedAt": datetime.datetime.now()
         }
         mongo.db.contacts.insert_one(contact_data)
-        return render_template('contactlist.html')
+        return redirect(url_for('display_all_contacts'))
     return render_template('addcontact.html')
 
 @app.route('/favorites')
