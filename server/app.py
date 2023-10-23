@@ -26,13 +26,16 @@ def display_all_contacts():
     filter_type = request.args.get('filter', 'all')
 
     if filter_type == 'all':
-        contacts = mongo.db.contacts.find().sort("fullName", pymongo.ASCENDING)
+        contacts = list(mongo.db.contacts.find())
+        contacts.sort(key=lambda x: x['fullName'].lower())
     elif filter_type == 'favorites':
-        contacts = mongo.db.contacts.find({"favorite": True}).sort("fullName", pymongo.ASCENDING)
+        contacts = list(mongo.db.contacts.find({"favorite": True}))
+        contacts.sort(key=lambda x: x['fullName'].lower())
     elif filter_type == 'recent':
         contacts = mongo.db.contacts.find().sort("updatedAt", pymongo.DESCENDING)
     else:
-        contacts = mongo.db.contacts.find().sort("fullName", pymongo.ASCENDING)
+        contacts = list(mongo.db.contacts.find())
+        contacts.sort(key=lambda x: x['fullName'].lower())
 
     return render_template('contactlist.html', contacts=contacts, selected_filter=filter_type)
 
