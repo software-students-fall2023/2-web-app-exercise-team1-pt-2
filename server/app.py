@@ -25,6 +25,13 @@ def display_all_contacts():
     contacts = mongo.db.contacts.find()
     return render_template('contactlist.html', contacts=contacts)
 
+
+@app.route('/search')
+def search():
+    name_search = request.args.get('name')
+    contacts = mongo.db.contacts.find({"fullName": name_search})
+    return render_template('contactlist.html', contacts=contacts)
+
 @app.route('/add_contact', methods=['GET', 'POST'])
 def add_contact():
     if request.method == 'POST':
