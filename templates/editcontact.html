@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel= stylesheet href="{{ url_for('static', filename='editcontact.css') }}">
+    <title>Contact Details</title>
+</head>
+<body>
+    <header>
+        <h1>Edit Contact</h1>
+    </header>
+    <main>
+        <form method="POST" action="{{ url_for('edit_contact', contact_id=doc._id) }}">
+            <div class="input-group">
+                <strong>Full Name:</strong>
+                <input type="text" id="fname" name="fname" value="{{doc.fullName}}" placeholder="Full Name"/>
+            </div>
+            <div class="input-group">
+                <strong>Phone Number:</strong>
+                <input type="text" id="pnumber" name="pnumber" value="{{doc.phoneNumber}}" placeholder="Phone Number"/>
+            </div>
+            <div class="input-group">
+                <strong>Email Address:</strong>
+                <input type="text" id="email" name="email" value="{{doc.emailAddress}}" placeholder="Email Address"/>
+            </div>
+            <div class="buttons">
+                <input type="submit" value="Save" />
+                <br>
+                <a href="{{ url_for('display_all_contacts') }}"><input type="button" value="Cancel" /></a>
+            </div>
+        </form>
+    </main>
+</body>
+</html>

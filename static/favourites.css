@@ -1,0 +1,175 @@
+*{
+    font-family: Arial, sans-serif;
+}
+
+header{
+    font-size: 2vw;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: white;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 80%;
+    margin: 2rem auto;
+    max-width: 500px;
+    padding: 1rem;
+    background-color: white;
+    border: solid;
+    border-left: transparent;
+    border-right: transparent;
+    border-color: #f4f4f4;
+    border-width: 1%;
+}
+
+.contact{
+    padding: 4% 1%;
+    margin: 1%;
+    display: flex;
+    background-color: white;
+    flex-direction: row;
+    align-items: center;
+}
+
+.contact > i{
+    border-color: #f4f4f4;
+    border-style: solid;
+    border-radius: 50% 50%;
+    padding: 25px 25px;
+    margin: 25px 15px;
+    background-color: #f4f4f4;
+}
+
+.contact > strong{
+    padding: 0 4%;
+    font-size: auto;
+}
+
+.search-bar{
+    width: 80%;
+    max-width: 500px;
+    margin: 2rem auto;
+    padding: 1rem;
+    margin: 2rem auto;
+    background: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    border-radius: 60px;
+}
+
+.search-bar input{
+    background: transparent;
+    flex: 1;
+    border: 0;
+    outline: none;
+    padding: 3% 3%;
+    font-size: 20px;
+    color: black;
+}
+.search-bar button{
+    border: 0;
+    border-radius: 20%;
+    font-size: auto;
+    background: transparent;
+    cursor: pointer;
+    margin: 3% 3%;
+    
+}
+.search-bar button > i{
+    color: black;
+    margin: 3% 3%;
+}
+
+.favourites-button{
+
+    color: rgb(41,118,211);
+    background-color: white;
+    border-style: solid;
+    border-width: 1px;
+    height: 38px;
+    width: 80px;
+    cursor: pointer;
+    border-radius: 2px;
+    margin-left: 200px;
+    font-weight: bold;
+    transition: background-color 0.5s, color 0.5s
+
+}
+
+.favourites-button:hover{
+    background-color:rgb(41,118,211) ;
+    color : white
+}
+
+.favourites-button:active {
+    opacity: 0.7;
+    background-color:rgb(41,118,211) ;
+    color : white
+    
+}
+
+.remove-button{
+
+    color: rgb(217, 45, 42);
+    background-color: white;
+    border-style: solid;
+    border-width: 1px;
+    height: 38px;
+    width: 80px;
+    cursor: pointer;
+    border-radius: 2px;
+    font-weight: bold;
+    transition: background-color 0.5s, color 0.5s;
+    margin-left: 150px;
+
+}
+
+.remove-button:hover{
+    background-color: rgb(217, 45, 42) ;
+    color : white
+}
+
+.remove-button:active {
+    opacity: 0.7;
+    background-color: rgb(217, 45, 42) ;
+    color : white
+    
+}
+
+.buttons{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.buttons a {
+    display: inline-block;
+    background-color: #333;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    text-decoration: none;
+}
+
+.buttons a:hover {
+    background-color: #555;
+}
+
+#back{
+    order: 1;
+}
+
+#edit{
+    order: 2;
+}

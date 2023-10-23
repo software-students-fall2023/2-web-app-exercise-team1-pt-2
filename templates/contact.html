@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel= stylesheet href="{{ url_for('static', filename='contact.css') }}">
+    <title>Contact Details</title>
+</head>
+<body>
+    <header>
+        <h1>Contact Details</h1>
+    </header>
+    <main>
+        <div class="buttons">
+            <a href="javascript:history.back()" id="back">&#8592; Back</a>
+            <a href="{{ url_for('edit', contact_id=contact._id) }}" id="edit">Edit</a>
+        </div>
+        <div class="details-group">
+            <strong>Full Name:</strong>
+            <p id="fullName">{{contact.fullName}}</p>
+        </div>
+        <div class="details-group">
+            <strong>Phone Number:</strong>
+            <p id="phoneNumber">{{contact.phoneNumber}}</p>
+        </div>
+        <div class="details-group">
+            <strong>Email Address:</strong>
+            <p id="emailAddress">{{contact.emailAddress}}</p>
+        </div>
+    </main>
+</body>
+</html>

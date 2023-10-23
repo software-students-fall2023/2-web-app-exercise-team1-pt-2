@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='search.css') }}"
+    />
+    <script
+      src="https://kit.fontawesome.com/eac29ec11e.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Contacts</title>
+  </head>
+  <body>
+    <header>
+      <h1>Contacts</h1>
+    </header>
+    <form action="{{url_for('search')}}" method="get" class="search-bar">
+      <input type="text" name="name" placeholder="Search" />
+      <button type="submit">
+        <i class="fa-solid fa-magnifying-glass fa-2x"></i>
+      </button>
+    </form>
+    <div class="chips">
+      <a
+        href="{{ url_for('display_all_contacts', filter='all') }}"
+        class="chip {{ 'selected' if selected_filter == 'all' else '' }}"
+        >All</a
+      >
+      <a
+        href="{{ url_for('display_all_contacts', filter='favorites') }}"
+        class="chip {{ 'selected' if selected_filter == 'favorites' else '' }}"
+        >Favorites</a
+      >
+      <a
+        href="{{ url_for('display_all_contacts', filter='recent') }}"
+        class="chip {{ 'selected' if selected_filter == 'recent' else '' }}"
+        >Recent</a
+      >
+    </div>
+    <main>
+      {% for contact in contacts %}
+      <div class="contact">
+        <i class="fa-solid fa-user"></i>
+        <a href="{{ url_for('contact_details', contact_id=contact._id) }}">
+          <strong>{{contact.fullName}}</strong>
+        </a>
+        <form method="post" action="/contact/{{ contact._id }}/favorite" class="favourites-button">
+            <input type="hidden" name="contact_id" value="{{ contact._id }}" />
+            {% if contact.favorite %}
+                <button type="submit" class="favourited-button">Favorited</button>
+            {% else %}
+                <button type="submit" class="favourites-button">Favorite</button>
+            {% endif %}
+        </form>
+        <!-- <button class="favourites-button">Favourite</button> -->
+        <a href="{{ url_for('delete', contact_id=contact._id)}}">
+            <button class="delete-button">Delete</button>
+        </a>
+      </div>
+      {% endfor %}
+    </main>
+    <div class="add-contact">
+      <a href="{{ url_for('add_contact')}}">
+        <button type="submit">
+          <i class="fa-solid fa-plus fa-2x"></i>
+        </button>
+      </a>
+    </div>
+  </body>
+</html>

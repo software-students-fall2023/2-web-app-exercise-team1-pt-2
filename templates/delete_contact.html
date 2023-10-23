@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel= stylesheet href="{{ url_for('static', filename='deletecontact.css') }}">
+    <title>Delete Contact</title>
+</head>
+<body>
+    <header>
+        <h1>Delete Contact</h1>
+    </header>
+    <main>
+        <div class="buttons">
+            <a href="javascript:history.back()" id="back">&#8592; Back</a>
+    
+        </div>
+        <div class="details-group">
+            <strong>Full Name:</strong>
+            <p id="fullName">{{doc.fullName}}</p>
+        </div>
+        
+        <div class="details-group">
+            <strong>Phone Number:</strong>
+            <p id="phoneNumber">{{doc.phoneNumber}}</p>
+        </div>
+        
+        <div class="details-group">
+            <strong>Email Address:</strong>
+            <p id="emailAddress">{{doc.emailAddress}}</p>
+        </div>
+        <a href="{{ url_for('delete_contact', contact_id=doc._id)}}">
+            <button class = "delete-button"> Delete </button>
+        </a>
+    </main>
+</body>
+</html>
