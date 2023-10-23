@@ -11,23 +11,25 @@
         <h1>Edit Contact</h1>
     </header>
     <main>
-        <div class="input-group">
-            <strong>Full Name:</strong>
-            <input type="text" id="fname" name="fname" placeholder="Full Name"/>
-        </div>
-        <div class="input-group">
-            <strong>Phone Number:</strong>
-            <input type="text" id="pnumber" name="pnumber" placeholder="Phone Number"/>
-        </div>
-        <div class="input-group">
-            <strong>Email Address:</strong>
-            <input type="text" id="email" name="email" placeholder="Email Address"/>
-        </div>
-        <div class="buttons">
-            <input type="submit" value="Save" />
-            <br>
-            <input type="button" value="Cancel" />
-        </div>
+        <form method="POST" action="{{ url_for('edit_contact', contact_id=doc._id) }}">
+            <div class="input-group">
+                <strong>Full Name:</strong>
+                <input type="text" id="fname" name="fname" value="{{doc.fullName}}" placeholder="Full Name"/>
+            </div>
+            <div class="input-group">
+                <strong>Phone Number:</strong>
+                <input type="text" id="pnumber" name="pnumber" value="{{doc.phoneNumber}}" placeholder="Phone Number"/>
+            </div>
+            <div class="input-group">
+                <strong>Email Address:</strong>
+                <input type="text" id="email" name="email" value="{{doc.emailAddress}}" placeholder="Email Address"/>
+            </div>
+            <div class="buttons">
+                <input type="submit" value="Save" />
+                <br>
+                <a href="{{ url_for('display_all_contacts') }}"><input type="button" value="Cancel" /></a>
+            </div>
+        </form>
     </main>
 </body>
 </html>

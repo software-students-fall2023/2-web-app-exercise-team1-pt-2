@@ -60,28 +60,34 @@ def contact_details(contact_id):
     contact = mongo.db.contacts.find_one_or_404({"_id": ObjectId(contact_id)})
     return render_template('contact.html', contact=contact)
 
+@app.route('/edit/<contact_id>')
+def edit(contact_id):
+    doc = mongo.db.messages.find_one({"_id": ObjectId(contact_id)})
+    return render_template('edit.html', doc=doc)
 
-@app.route('/contact/<contact_id>/edit')
+
+@app.route('/edit/<contact_id>', methods=['POST'])
 def edit_contact(contact_id):
-    contact = mongo.db.contacts.find_one_or_404({"_id": ObjectId(contact_id)})
-    return render_template('editcontact.html', contact=contact)
+    name = request.form.get("fname")
+    number = request.form.get("pnumber")
+    email = request.form.get("email")
 
+    doc = {
+        "fullName": name,
+        "phoneNumber": number,
+        "emailAddress": email,
+        "favorite": False,
+        "createdAt": datetime.datetime.now(),
+        "updatedAt": datetime.datetime.now()
+    }
 
-@app.route('/contact/<contact_id>/update', methods=['POST'])
-def update_contact(contact_id):
-    mongo.db.contacts.update_one(
-        {"_id": ObjectId(contact_id)},
-        {
-            "$set": {
-                "fullName": request.form.get("fullName"),
-                "phoneNumber": request.form.get("phoneNumber"),
-                "emailAddress": request.form.get("emailAddress"),
-                "favorite": request.form.get("favorite"),
-                "updatedAt": datetime.datetime.now()
-            }
-        }
+    mongo.db.messages.update_one(
+        {"_id": ObjectId(contact_id)}, 
+        { "$set": doc }
     )
-    return redirect(url_for('contact', contact_id=contact_id))
+
+    return redirect(url_for('display_all_contacts'))
+
 
 @app.route('/contact/<contact_id>/delete', methods=['GET','DELETE'])
 def delete_contact(contact_id):
