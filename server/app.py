@@ -109,15 +109,27 @@ def delete_contact(contact_id):
 
 @app.route('/contact/<contact_id>/favorite', methods=['POST'])
 def favorite_contact(contact_id):
-    mongo.db.contacts.update_one(
-        {"_id": ObjectId(contact_id)},
-        {
-            "$set": {
-                "favorite": "true",
-            }
-        }
-    )
+    # check if contact is already favorited
     contact = mongo.db.contacts.find_one({"_id": ObjectId(contact_id)})
+
+    if contact['favorite'] == True:
+        mongo.db.contacts.update_one(
+            {"_id": ObjectId(contact_id)},
+            {
+                "$set": {
+                    "favorite": "false",
+                }
+            }
+        )
+    else:
+        mongo.db.contacts.update_one(
+            {"_id": ObjectId(contact_id)},
+            {
+                "$set": {
+                    "favorite": "true",
+                }
+            }
+        )
     return render_template('contact.html', contact=contact)
 
 app.run(debug=True)
