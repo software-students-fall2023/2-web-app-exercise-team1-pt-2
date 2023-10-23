@@ -169,6 +169,31 @@ main{
     color : white;
 }
 
+.favourited-button{
+    background-color: #333;
+    color: white;
+    border-style: solid;
+    border-width: 1px;
+    height: 38px;
+    width: 80px;
+    cursor: pointer;
+    border-radius: 2px;
+    margin-left: auto;
+    font-weight: bold;
+    transition: background-color 0.5s, color 0.5s;
+}
+
+.favourited-button:hover{
+    background-color: white;
+    color: #333;
+}
+
+.favourited-button:active {
+    opacity: 0.7;
+    background-color: white;
+    color : #333;
+}
+
 .delete-button{
     color: rgb(217, 45, 42);
     background-color: white;
