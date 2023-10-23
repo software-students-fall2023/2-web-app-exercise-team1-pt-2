@@ -27,9 +27,11 @@
             {% for contact in contacts %}
             <div class="contact">
                 <i class="fa-solid fa-user"></i>
-                <strong> {{contact.fullName}} </strong>
-                <button class = "favourites-button"> Favourite </button>
-                <button class = "delete-button"> Delete </button>
+                <a href="{{ url_for('contact_details', contact_id=contact._id) }}">
+                    <strong>{{contact.fullName}}</strong>
+                </a>
+                <button class="favourites-button">Favourite</button>
+                <button class="delete-button">Delete</button>
             </div>
             {% endfor %}
         </main>

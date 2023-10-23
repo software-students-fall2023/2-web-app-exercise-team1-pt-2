@@ -57,13 +57,13 @@ def display_favorites():
 
 @app.route('/contact/<contact_id>')
 def contact_details(contact_id):
-    contact = mongo.db.contacts.find_one_or_404({"_id": ObjectId(contact_id)})
+    contact = mongo.db.contacts.find_one({"_id": ObjectId(contact_id)})
     return render_template('contact.html', contact=contact)
 
 @app.route('/edit/<contact_id>')
 def edit(contact_id):
-    doc = mongo.db.messages.find_one({"_id": ObjectId(contact_id)})
-    return render_template('edit.html', doc=doc)
+    doc = mongo.db.contacts.find_one({"_id": ObjectId(contact_id)})
+    return render_template('editcontact.html', doc=doc)
 
 
 @app.route('/edit/<contact_id>', methods=['POST'])
@@ -81,7 +81,7 @@ def edit_contact(contact_id):
         "updatedAt": datetime.datetime.now()
     }
 
-    mongo.db.messages.update_one(
+    mongo.db.contacts.update_one(
         {"_id": ObjectId(contact_id)}, 
         { "$set": doc }
     )

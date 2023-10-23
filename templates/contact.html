@@ -13,19 +13,19 @@
     <main>
         <div class="buttons">
             <a href="javascript:history.back()" id="back">&#8592; Back</a>
-            <a href="./edit" id="edit">Edit</a>
+            <a href="{{ url_for('edit', contact_id=contact._id) }}" id="edit">Edit</a>
         </div>
         <div class="details-group">
             <strong>Full Name:</strong>
-            <p id="fullName">name filler</p>
+            <p id="fullName">{{contact.fullName}}</p>
         </div>
         <div class="details-group">
             <strong>Phone Number:</strong>
-            <p id="phoneNumber">number filler</p>
+            <p id="phoneNumber">{{contact.phoneNumber}}</p>
         </div>
         <div class="details-group">
             <strong>Email Address:</strong>
-            <p id="emailAddress">email filler</p>
+            <p id="emailAddress">{{contact.emailAddress}}</p>
         </div>
     </main>
 </body>
