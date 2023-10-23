@@ -17,24 +17,21 @@
         </div>
         <div class="details-group">
             <strong>Full Name:</strong>
-            <p id="fullName">name filler</p>
+            <p id="fullName">{{doc.fullName}}</p>
         </div>
         
         <div class="details-group">
             <strong>Phone Number:</strong>
-            <p id="phoneNumber">number filler</p>
+            <p id="phoneNumber">{{doc.phoneNumber}}</p>
         </div>
         
         <div class="details-group">
             <strong>Email Address:</strong>
-            <p id="emailAddress">email filler</p>
+            <p id="emailAddress">{{doc.emailAddress}}</p>
         </div>
-
-        <button class = "delete-button"> Delete </button>
-
-        
-
-       
+        <a href="{{ url_for('delete_contact', contact_id=doc._id)}}">
+            <button class = "delete-button"> Delete </button>
+        </a>
     </main>
 </body>
 </html>
