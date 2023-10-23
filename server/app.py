@@ -6,6 +6,7 @@ from flask import Flask, render_template, request, redirect, abort, url_for, mak
 import datetime
 from bson.objectid import ObjectId
 import pymongo
+import re
 
 load_dotenv()
 uri=os.getenv('URI')
@@ -28,7 +29,7 @@ def display_all_contacts():
 @app.route('/search')
 def search():
     name_search = request.args.get('name')
-    contacts = mongo.db.contacts.find({"fullName": name_search})
+    contacts = mongo.db.contacts.find({"fullName": re.compile(name_search, re.IGNORECASE)})
     return render_template('contactlist.html', contacts=contacts)
 
 @app.route('/add_contact', methods=['GET', 'POST'])
