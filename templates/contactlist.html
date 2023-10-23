@@ -12,8 +12,8 @@
     <header>
         <h1> Contacts </h1>
     </header>
-        <form action="" class="search-bar">
-            <input type="text" placeholder="Search" >
+        <form action="{{url_for('search')}}" method="get" class="search-bar">
+            <input type="text" name="name" placeholder="Search" >
             <button type="submit">
                 <i class="fa-solid fa-magnifying-glass fa-2x"></i>
             </button>
@@ -24,42 +24,14 @@
             <button class = "chip"> Recent </button>
         </div>
         <main>
+            {% for contact in contacts %}
             <div class="contact">
                 <i class="fa-solid fa-user"></i>
-                <strong>Name</strong>
+                <strong> {{contact.fullName}} </strong>
                 <button class = "favourites-button"> Favourite </button>
                 <button class = "delete-button"> Delete </button>
             </div>
-            <div class="contact">
-                <i class="fa-solid fa-user"></i>
-                <strong>Name</strong>
-                <button class = "favourites-button"> Favourite </button>
-                <button class = "delete-button"> Delete </button>
-            </div>
-            <div class="contact">
-                <i class="fa-solid fa-user"></i>
-                <strong>Name</strong>
-                <button class = "favourites-button"> Favourite </button>
-                <button class = "delete-button"> Delete </button>
-            </div>
-            <div class="contact">
-                <i class="fa-solid fa-user"></i>
-                <strong>Name</strong>
-                <button class = "favourites-button"> Favourite </button>
-                <button class = "delete-button"> Delete </button>
-            </div>
-            <div class="contact">
-                <i class="fa-solid fa-user"></i>
-                <strong>Name</strong>
-                <button class = "favourites-button"> Favourite </button>
-                <button class = "delete-button"> Delete </button>
-            </div>
-            <div class="contact">
-                <i class="fa-solid fa-user"></i>
-                <strong>Name</strong>
-                <button class = "favourites-button"> Favourite </button>
-                <button class = "delete-button"> Delete </button>
-            </div>
+            {% endfor %}
         </main>
         <div class="add-contact">
             <a href="{{ url_for('add_contact')}}">
