@@ -99,13 +99,15 @@ def edit_contact(contact_id):
 
     return redirect(url_for('display_all_contacts'))
 
+@app.route('/delete/<contact_id>')
+def delete(contact_id):
+    doc = mongo.db.contacts.find_one({"_id": ObjectId(contact_id)})
+    return render_template('delete_contact.html', doc=doc)
 
 @app.route('/contact/<contact_id>/delete', methods=['GET','DELETE'])
 def delete_contact(contact_id):
-    if request.method == 'GET':
-        return render_template('deletecontact.html', contact_id=contact_id)
     mongo.db.contacts.delete_one({"_id": ObjectId(contact_id)})
-    return redirect(url_for('contactlist'))
+    return redirect(url_for('display_all_contacts'))
 
 @app.route('/contact/<contact_id>/favorite', methods=['POST'])
 def favorite_contact(contact_id):

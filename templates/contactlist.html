@@ -52,7 +52,9 @@
           <button type="submit"  class="favourites-button">Favorite</button>
         </form>
         <!-- <button class="favourites-button">Favourite</button> -->
-        <button class="delete-button">Delete</button>
+        <a href="{{ url_for('delete', contact_id=contact._id)}}">
+            <button class="delete-button">Delete</button>
+        </a>
       </div>
       {% endfor %}
     </main>
