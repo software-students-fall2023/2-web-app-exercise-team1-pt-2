@@ -17,6 +17,14 @@ Make sure that you have installed the following:
 - Flask
 - Pymongo
 - Dotenv
-Install these using pip if you have not
-Next, add an .env file similar to the [.env_example.txt](.env_example.txt) file to your local repository
-Finally, run app.py
+
+
+If you have not installed any of these:
+
+- in your temrinal type pip3 install -r requirements.txt 
+
+Next:
+- add .env file to your local repository similar to [.env_example.txt](.env_example.txt) 
+
+Finally:
+- navigate to app.py and run app.py
