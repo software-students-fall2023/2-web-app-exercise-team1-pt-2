@@ -117,6 +117,7 @@ def favorite_contact(contact_id):
             }
         }
     )
-    return redirect(url_for('contact', contact_id=contact_id))
+    contact = mongo.db.contacts.find_one({"_id": ObjectId(contact_id)})
+    return render_template('contact.html', contact=contact)
 
 app.run(debug=True)
