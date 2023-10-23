@@ -47,9 +47,13 @@
         <a href="{{ url_for('contact_details', contact_id=contact._id) }}">
           <strong>{{contact.fullName}}</strong>
         </a>
-        <form method="post" action="/contact/{{ contact._id }}/favorite"  class="favourites-button">
-          <input type="hidden" name="contact_id" value="{{ contact._id }}" />
-          <button type="submit"  class="favourites-button">Favorite</button>
+        <form method="post" action="/contact/{{ contact._id }}/favorite" class="favourites-button">
+            <input type="hidden" name="contact_id" value="{{ contact._id }}" />
+            {% if contact.favorite %}
+                <button type="submit" class="favourites-button">Favorited</button>
+            {% else %}
+                <button type="submit" class="favourites-button">Favorite</button>
+            {% endif %}
         </form>
         <!-- <button class="favourites-button">Favourite</button> -->
         <a href="{{ url_for('delete', contact_id=contact._id)}}">

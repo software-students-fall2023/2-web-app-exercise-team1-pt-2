@@ -63,7 +63,7 @@ def add_contact():
 
 @app.route('/favorites')
 def display_favorites():
-    contacts = mongo.db.contacts.find({"favorite": "true"})
+    contacts = mongo.db.contacts.find({"favorite": True})
     return render_template('fav_contact_list.html', contacts=contacts)
 
 @app.route('/contact/<contact_id>')
@@ -119,7 +119,7 @@ def favorite_contact(contact_id):
             {"_id": ObjectId(contact_id)},
             {
                 "$set": {
-                    "favorite": "false",
+                    "favorite": False,
                 }
             }
         )
@@ -128,10 +128,10 @@ def favorite_contact(contact_id):
             {"_id": ObjectId(contact_id)},
             {
                 "$set": {
-                    "favorite": "true",
+                    "favorite": True,
                 }
             }
         )
-    return render_template('contact.html', contact=contact)
+    return redirect(url_for('display_all_contacts'))
 
 app.run(debug=True)
