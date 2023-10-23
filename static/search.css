@@ -35,6 +35,7 @@ main{
 .contact{
     padding: 3% 1%;
     margin: 0px;
+    width: 95%;
     display: flex;
     background-color: white;
     flex-direction: row;
@@ -53,6 +54,7 @@ main{
 .contact > strong{
     padding: 0 4%;
     font-size: auto;
+    margin-right: auto;
 }
 
 .search-bar{
@@ -118,7 +120,6 @@ main{
     opacity: 0.7;
     background-color:#333;
     color : white;
-    
 }
 
 .favourites-button{
@@ -130,7 +131,7 @@ main{
     width: 80px;
     cursor: pointer;
     border-radius: 2px;
-    margin-left: 30%;
+    margin-left: auto;
     font-weight: bold;
     transition: background-color 0.5s, color 0.5s;
 }
@@ -144,7 +145,6 @@ main{
     opacity: 0.7;
     background-color:#333;
     color : white;
-    
 }
 
 .delete-button{
@@ -180,6 +180,7 @@ main{
     padding: 3% 3%;
 
 }
+
 .add-contact button{
     display: inline-block;
     background-color: #333;
@@ -189,5 +190,6 @@ main{
     text-decoration: none;
     cursor: pointer;
 }
+
 
 
